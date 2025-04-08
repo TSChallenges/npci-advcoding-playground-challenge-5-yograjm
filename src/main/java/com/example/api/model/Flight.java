@@ -1,4 +1,4 @@
-package com.hackerrank.api.model;
+package com.example.api.model;
 
 import lombok.Data;
 import jakarta.persistence.Entity;
