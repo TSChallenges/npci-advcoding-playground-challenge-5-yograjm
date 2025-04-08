@@ -1,10 +1,10 @@
-package com.hackerrank.api.controller;
+package com.example.api.controller;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.hackerrank.api.repository.FlightRepository;
-import com.hackerrank.api.model.Flight;
+import com.example.api.repository.FlightRepository;
+import com.example.api.model.Flight;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
