@@ -13,18 +13,62 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    - name: Maven test
-      id: maven-test
+    - name: testFlightEndpointWithPOST
+      id: testflightendpointwithpost
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: Maven test
+        test-name: testFlightEndpointWithPOST
         setup-command: ''
-        command: mvn clean test
+        command: mvn -Dtest=FlightApiApplicationTests#testFlightEndpointWithPOST test
         timeout: 10
-        max-score: 20
+        max-score: 4
+    - name: testFlightEndpointWithGETList
+      id: testflightendpointwithgetlist
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testFlightEndpointWithGETList
+        setup-command: ''
+        command: mvn -Dtest=FlightApiApplicationTests#testFlightEndpointWithGETList
+          test
+        timeout: 10
+        max-score: 4
+    - name: testFlightEndpointWithGETListAndOriginFilter
+      id: testflightendpointwithgetlistandoriginfilter
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testFlightEndpointWithGETListAndOriginFilter
+        setup-command: ''
+        command: mvn -Dtest=FlightApiApplicationTests#testFlightEndpointWithGETListAndOriginFilter
+          test
+        timeout: 10
+        max-score: 4
+    - name: testFlightEndpointWithGETListAndDestinationOrder
+      id: testflightendpointwithgetlistanddestinationorder
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testFlightEndpointWithGETListAndDestinationOrder
+        setup-command: ''
+        command: mvn -Dtest=FlightApiApplicationTests#testFlightEndpointWithGETListAndDestinationOrder
+          test
+        timeout: 10
+        max-score: 4
+    - name: testFlightEndpointWithGETById
+      id: testflightendpointwithgetbyid
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testFlightEndpointWithGETById
+        setup-command: ''
+        command: mvn -Dtest=FlightApiApplicationTests#testFlightEndpointWithGETById
+          test
+        timeout: 10
+        max-score: 4
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
-        MAVEN-TEST_RESULTS: "${{steps.maven-test.outputs.result}}"
+        TESTFLIGHTENDPOINTWITHPOST_RESULTS: "${{steps.testflightendpointwithpost.outputs.result}}"
+        TESTFLIGHTENDPOINTWITHGETLIST_RESULTS: "${{steps.testflightendpointwithgetlist.outputs.result}}"
+        TESTFLIGHTENDPOINTWITHGETLISTANDORIGINFILTER_RESULTS: "${{steps.testflightendpointwithgetlistandoriginfilter.outputs.result}}"
+        TESTFLIGHTENDPOINTWITHGETLISTANDDESTINATIONORDER_RESULTS: "${{steps.testflightendpointwithgetlistanddestinationorder.outputs.result}}"
+        TESTFLIGHTENDPOINTWITHGETBYID_RESULTS: "${{steps.testflightendpointwithgetbyid.outputs.result}}"
       with:
-        runners: maven-test
+        runners: testflightendpointwithpost,testflightendpointwithgetlist,testflightendpointwithgetlistandoriginfilter,testflightendpointwithgetlistanddestinationorder,testflightendpointwithgetbyid
