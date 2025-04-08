@@ -13,50 +13,50 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    - name: testFlightEndpointWithPOST
-      id: testflightendpointwithpost
+    - name: POST Endpoint
+      id: post-endpoint
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: testFlightEndpointWithPOST
+        test-name: POST Endpoint
         setup-command: ''
         command: mvn -Dtest=FlightApiApplicationTests#testFlightEndpointWithPOST test
         timeout: 10
         max-score: 4
-    - name: testFlightEndpointWithGETList
-      id: testflightendpointwithgetlist
+    - name: GETList Endpoint
+      id: getlist-endpoint
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: testFlightEndpointWithGETList
+        test-name: GETList Endpoint
         setup-command: ''
         command: mvn -Dtest=FlightApiApplicationTests#testFlightEndpointWithGETList
           test
         timeout: 10
         max-score: 4
-    - name: testFlightEndpointWithGETListAndOriginFilter
-      id: testflightendpointwithgetlistandoriginfilter
+    - name: GETListAndOriginFilter Endpoint
+      id: getlistandoriginfilter-endpoint
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: testFlightEndpointWithGETListAndOriginFilter
+        test-name: GETListAndOriginFilter Endpoint
         setup-command: ''
         command: mvn -Dtest=FlightApiApplicationTests#testFlightEndpointWithGETListAndOriginFilter
           test
         timeout: 10
         max-score: 4
-    - name: testFlightEndpointWithGETListAndDestinationOrder
-      id: testflightendpointwithgetlistanddestinationorder
+    - name: GETListAndDestinationOrder Endpoint
+      id: getlistanddestinationorder-endpoint
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: testFlightEndpointWithGETListAndDestinationOrder
+        test-name: GETListAndDestinationOrder Endpoint
         setup-command: ''
         command: mvn -Dtest=FlightApiApplicationTests#testFlightEndpointWithGETListAndDestinationOrder
           test
         timeout: 10
         max-score: 4
-    - name: testFlightEndpointWithGETById
-      id: testflightendpointwithgetbyid
+    - name: GETById Endpoint
+      id: getbyid-endpoint
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: testFlightEndpointWithGETById
+        test-name: GETById Endpoint
         setup-command: ''
         command: mvn -Dtest=FlightApiApplicationTests#testFlightEndpointWithGETById
           test
@@ -65,10 +65,10 @@ jobs:
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
-        TESTFLIGHTENDPOINTWITHPOST_RESULTS: "${{steps.testflightendpointwithpost.outputs.result}}"
-        TESTFLIGHTENDPOINTWITHGETLIST_RESULTS: "${{steps.testflightendpointwithgetlist.outputs.result}}"
-        TESTFLIGHTENDPOINTWITHGETLISTANDORIGINFILTER_RESULTS: "${{steps.testflightendpointwithgetlistandoriginfilter.outputs.result}}"
-        TESTFLIGHTENDPOINTWITHGETLISTANDDESTINATIONORDER_RESULTS: "${{steps.testflightendpointwithgetlistanddestinationorder.outputs.result}}"
-        TESTFLIGHTENDPOINTWITHGETBYID_RESULTS: "${{steps.testflightendpointwithgetbyid.outputs.result}}"
+        POST-ENDPOINT_RESULTS: "${{steps.post-endpoint.outputs.result}}"
+        GETLIST-ENDPOINT_RESULTS: "${{steps.getlist-endpoint.outputs.result}}"
+        GETLISTANDORIGINFILTER-ENDPOINT_RESULTS: "${{steps.getlistandoriginfilter-endpoint.outputs.result}}"
+        GETLISTANDDESTINATIONORDER-ENDPOINT_RESULTS: "${{steps.getlistanddestinationorder-endpoint.outputs.result}}"
+        GETBYID-ENDPOINT_RESULTS: "${{steps.getbyid-endpoint.outputs.result}}"
       with:
-        runners: testflightendpointwithpost,testflightendpointwithgetlist,testflightendpointwithgetlistandoriginfilter,testflightendpointwithgetlistanddestinationorder,testflightendpointwithgetbyid
+        runners: post-endpoint,getlist-endpoint,getlistandoriginfilter-endpoint,getlistanddestinationorder-endpoint,getbyid-endpoint
