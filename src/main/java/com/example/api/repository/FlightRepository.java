@@ -1,6 +1,6 @@
-package com.hackerrank.api.repository;
+package com.example.api.repository;
 
-import com.hackerrank.api.model.Flight;
+import com.example.api.model.Flight;
 import java.util.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 
